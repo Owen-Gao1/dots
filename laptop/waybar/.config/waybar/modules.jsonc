@@ -2,10 +2,10 @@
   // Launcher
   "custom/launcher": {
     "format": "",
-    "on-click": "rofi -show drun",
+    "on-click": "wofi -show drun",
     "tooltip": false
   },
-
+ 
   // Workspaces (Hyprland)
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
@@ -32,42 +32,20 @@
     "tooltip": false
   },
 
-  // Check updates pacman or aur
-  "custom/updates": {
-    "format": "{}",
-    "return-type": "json",
-    "escape": true,
-    "tooltip": true,
-    "exec": "~/.config/waybar/scripts/check_updates.sh",
-    "interval": 1800,
-    "signal": 1,
-    "hide-empty-text": true,
-    "on-click": "~/.config/waybar/scripts/update_system.sh"
-  },
-
-  // CAVA Audio Visualizer
-  "custom/cava": {
-    "exec": "~/.config/waybar/scripts/cava.sh",
-    "format": "♪ {}",
-    "on-click-middle": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-left": "playerctl previous"
-  },
-
   // Memory / CPU / Temp
   "memory": {
-    "format": " {: >3}%",
-    "on-click": "btop"
+    "format": " {: >3}%",
+    "on-click": "hyprctl dispatch exec '[float]' kitty btop" 
   },
   "cpu": {
     "format": "󰘚 {usage: >3}%",
-    "on-click": "btop"
+    "on-click": "hyprctl dispatch exec '[float]' kitty btop" 
   },
   "temperature": {
     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     "critical-threshold": 80,
     "format": "  {temperatureC}°C",
-    "on-click": "btop"
+    "on-click": "hyprctl dispatch exec '[float]' kitty btop" 
   },
 
   // Idle inhibitor
@@ -81,7 +59,6 @@
     "tooltip-format-deactivated": "Idle inhibitor: OFF"
   },
 
-  // Battery
   "battery": {
     "states": {
       "warning": 30,
@@ -91,7 +68,7 @@
     "format-icons": ["", "", "", "", ""]
   },
 
-  // Language (Hyprland)
+  //Language (Hyprland)
   "hyprland/language": {
     "format": "󰌌 {short}",
     "tooltip-format": "Language: {long}"
@@ -108,22 +85,21 @@
     }
   },
 
-  // Backlight
   "backlight": {
     "format": "{icon} {percent: >3}%",
     "format-icons": ["", ""],
-    "on-scroll-down": "brightnessctl set 5%-",
-    "on-scroll-up": "brightnessctl set +5%"
+    "on-scroll-down": "brightnessctl set 1%-",
+    "on-scroll-up": "brightnessctl set +1%"
   },
 
   // Audio
   "pulseaudio": {
-    "scroll-step": 1,
     "format": "{icon} {volume: >3}%",
     "format-bluetooth": "{icon} {volume: >3}%",
-    "format-muted": " muted",
+    "format-muted": "{icon} muted",
     "format-icons": {
       "headphones": "",
+      "headphone": "",
       "handsfree": "",
       "headset": "",
       "phone": "",
@@ -131,9 +107,9 @@
       "car": "",
       "default": ["", ""]
     },
-    "on-click": "pavucontrol",
-    "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
-    "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
+    "on-click": "pactl set-sink-mute $(pactl get-default-sink) toggle ", 
+    "on-scroll-up": "pactl set-sink-volume $(pactl get-default-sink) +5%",
+    "on-scroll-down": "pactl set-sink-volume $(pactl get-default-sink) -5%"
   },
 
   // Network
