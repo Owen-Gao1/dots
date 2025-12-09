@@ -86,11 +86,21 @@ tooltip label {
 	opacity: 0.3;
 	background: @background-secondary;
 }
-
+@keyframes blink {
+    to {
+        background-color: @base;
+        color: @error;
+    }
+}
 #workspaces button.urgent {
 	background: @error;
 	color: @base;
 	border-color: @maroon;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
 }
 
 /* -----------------------------------------------------------------------------
