@@ -2,8 +2,8 @@
 
 # Configuration
 API_KEY="ed9e1f66545f2f25d7bb0655c4116045"
-CITY_ID="468902"
-UNITS="metric"
+CITY_ID="5372253"
+UNITS="imperial"
 LANG="en"
 
 # Function to check if API key is valid
@@ -91,7 +91,7 @@ if [ -n "$WEATHER_DATA" ]; then
     ICON=$(get_icon "$DESCRIPTION" "$IS_DAY" "$DETAILED_DESC")
     
     # Format output
-    echo "$ICON $TEMP°C 󰤾 $FEELS_LIKE°C"
+    echo "$ICON $TEMP󰔅 󰏈 $FEELS_LIKE󰔅"
 else
     echo "󰖙 Weather unavailable"
 fi

@@ -9,8 +9,6 @@
     "custom/launcher",
     "hyprland/workspaces",
     "custom/weather",
-    "custom/updates",
-    "custom/cava"
   ],
   
   "modules-center": [
@@ -21,13 +19,13 @@
   
   "modules-right": [
     "idle_inhibitor",
-    "battery",
+    "backlight",
     "hyprland/language",
     "keyboard-state",
-    "backlight",
     "pulseaudio",
     "network",
     "custom/vpn",
+    "battery",
     "clock",
     "custom/notification",
     "tray"
