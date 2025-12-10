@@ -1,11 +1,12 @@
 return{
-	"nvim-treesitter/nvim-treesitter",
-	"nvim-treesitter/playground",
-	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })()
-	end,
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+                "nvim-treesitter/playground",
+        },
+        build = ":TSUpdate", -- Simpler build command recommended for Lazy
+        event = { "BufReadPost", "BufNewFile" }, -- Load when opening a file
 	config = function ()
-		require'nvim-treesitter.configs'.setup {
+		require'nvim-treesitter.configs'.setup ({
                         ensure_installed = { "c",
                         "lua",
                         "vim",
@@ -20,11 +21,14 @@ return{
                         "java",
                         "python"
                 },
+                highlight = {
+                        enable = true,
+                        additional_vim_regex_highlighting = false,
+                },
 
-			highlight = { enable = true },
-			indent = { enable = true },
-			auto_install = true,
+                indent = { enable = true },
+                auto_install = true,
 
-		}
+		})
 	end,
 }
