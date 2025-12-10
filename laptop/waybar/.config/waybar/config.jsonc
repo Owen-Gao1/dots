@@ -8,7 +8,7 @@
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
-    "custom/weather",
+    "custom/weather"
   ],
   
   "modules-center": [
