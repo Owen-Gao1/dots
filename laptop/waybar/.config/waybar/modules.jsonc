@@ -88,8 +88,8 @@
   "backlight": {
     "format": "{icon} {percent: >3}%",
     "format-icons": ["", ""],
-    "on-scroll-down": "brightnessctl set 1%-",
-    "on-scroll-up": "brightnessctl set +1%"
+    "on-scroll-up": "brightnessctl set 1%-",
+    "on-scroll-down": "brightnessctl set +1%"
   },
 
   // Audio
